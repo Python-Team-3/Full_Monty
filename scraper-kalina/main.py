@@ -1,9 +1,3 @@
-'''
-Created on Jun 7, 2021
-
-@author: kalina
-'''
-
 import scraper.py
 
 if __name__ == '__main__':
