@@ -1,12 +1,6 @@
 import requests 
 from bs4 import BeautifulSoup
 
-'''
-Created on Jun 7, 2021
-
-@author: kalina
-'''
-
 
 class UrlScraper():
 
