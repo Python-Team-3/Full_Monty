@@ -1,7 +1,6 @@
 import requests 
 from bs4 import BeautifulSoup
 
-
 class UrlScraper():
 
     BLOG_URL = 'https://www.kulinarno-joana.com/'
@@ -53,11 +52,11 @@ class PostScraper():
         posts = []
 
         for url in self.post_urls:
-            posts.append(self._readPost(url))
+            posts.append(self._read_post(url))
         
         return posts
     
-    def _readPost(self, url_post):
+    def _read_post(self, url_post):
         r = requests.get(url_post)
 
         soup = BeautifulSoup(r.text, features='html.parser')
@@ -65,6 +64,20 @@ class PostScraper():
         post = soup.find('article')
         title = post.find('h1', class_='entry-title').text
         date = post.find('span', class_='posted-on').time['title']
-        text = post.find('div', class_='entry-content').text
+        body = post.find('div', class_='entry-content')
+
+        text = self._remove_linked_posts(body)
 
         return Post(title, date, text)
+
+    def _remove_linked_posts(self, body):
+
+        selects = body.find_all("ul", {"id": "klnArticleRelatedPosts"})
+        for match in selects:
+            match.decompose()
+
+        text = ""
+        for tag in body:
+            text += tag.text + '\n'
+
+        return text
