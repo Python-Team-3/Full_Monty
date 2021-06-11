@@ -1,6 +1,0 @@
-.coverage
-.pytest_cache
-coverage
-*posts.txt
-__pycache__
-scraper-env
