@@ -14,8 +14,8 @@ class Post():
             jsonTitle = json.dumps(self.title)
             jsonDate = json.dumps(self.title)
             jsonText = json.dumps(self.title)
-
-            json.write(jsonTitle)
-            json.write(jsonDate)
-            json.write(jsonText)
-            json.write((20 * '-') + '\n')
+            
+            json.loads(jsonTitle)
+            json.loads(jsonDate)
+            json.loads(jsonText)
+            json.loads((20 * '-') + '\n')
