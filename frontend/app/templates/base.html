@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://www.kulinarno-joana.com/wp-content/cache/minify/68450.default.include.66215c.css" media="all">
+        <meta property="og:locale" content="bg_BG">
+        <meta charset="UTF-8">
+
+        {% if title %}
+        <title>{{ title }} - Micro Macro Blog</title>
+        {% else %}
+        <title>Welcome to the Micro Macro Blog!</title>
+        {% endif %}
+    </head>
+    <body class="home blog home-front floral" style="--bg-image: url()">
+        <header id="masthead" class="site-header" role="banner">
+            <h1 class="site-title"><a href="_blank" rel="home">Микроблога на Сияна, Калина, Митко и Венци 🐍️</a></h1>
+            <nav id="site-navigation" class="main-navigation" role="navigation">
+                <div class="menu-main-menu-container">
+                    <ul id="primary-menu" class="menu">
+                        <li><a href="_blank">Начало</a></li>
+                        <li><a href="_blank">За нас</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <hr class="rule-dark">           
+        </header>
+
+        {% block content %}{% endblock %}
+
+    </body>
+</html>
