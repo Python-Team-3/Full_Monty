@@ -1,15 +1,66 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://www.kulinarno-joana.com/wp-content/cache/minify/68450.default.include.66215c.css" media="all">
+        <meta property="og:locale" content="bg_BG">
+        <meta charset="UTF-8">
+
         {% if title %}
         <title>{{ title }} - Micro Macro Blog</title>
         {% else %}
         <title>Welcome to the Micro Macro Blog!</title>
         {% endif %}
     </head>
-    <body>
-        <h1>Hawdy, {{ user.username }}!</h1>
-        {% for post in posts %}
-        <div><p>{{ post.author.username }} says: <br /><br /><b>{{ post.body }}</b></p></div>
-        {% endfor %}
+    <body class="home blog home-front floral" style="--bg-image: url()">
+        <div id="content">       
+            <main id="primary" class="site-main">
+                <header class="page-header">
+                    <h1 class="page-title">Hawdy, {{ user.username }}!</h1>
+                </header>
+                <h2 class="page-header">Последни публикации:</h2>
+                <div class="list">
+                    {% for article in articles %}
+                    <article class="list-article">
+                        <header class="entry-header">
+                            <h2>
+                                <a href="{{ article.link }}"> {{ article.title }}</a>
+                            </h2>
+                            <div class="entry-meta alt-font list-footer">
+                                <span class="posted-on">
+                                    <time class="entry-date published">{{ article.time }}</time>
+                                </span>                                
+                            </div>
+
+                        </header>
+                        <div class="entry-content">
+                            <a href="_blank">
+                                <img src="_blank">
+                            </a>
+                        </div>
+                    </article>
+                    {% endfor %}
+
+<!--                     <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article>
+                    <article></article> -->
+             
+                </div>
+            </main>
+        </div>
     </body>
 </html>
