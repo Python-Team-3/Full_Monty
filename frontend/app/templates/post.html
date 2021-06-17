@@ -1,3 +1,43 @@
-                    {% for post in posts %}
+{% extends "base.html" %}
+
+{% block content %}
+        <div id="content">
+            <main id="primary" class="site-main">
+                <article>
+                    <header class="entry-header">
+                        <h1 class="entry-title">                            
+                        </h1>
+                        <div class="entry-meta alt-font">
+                            <span class="posted-on">
+                                <time class="entry-date published"></time>
+                            </span>
+                            <span> common words</span>
+                            <span class="comments-links">
+                                <a href="_self/#comments"></a>
+                            </span>
+                        </div>
+                    </header>
+                    <div class="entry-content">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </article>
+                <div id="comments" class="comments-area">
+                    <h2 class="comments-title"> number of comments</h2>
+                    <ol class="comments-list">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+            </main>            
+        </div>
+{% endblock %}
+
+
+<!--                     {% for post in posts %}
                     <div><p>{{ post.author.username }} says: <br /><br /><b>{{ post.body }}</b></p></div>
-                    {% endfor %}   
+                    {% endfor %}
+ -->

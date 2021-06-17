@@ -5,8 +5,6 @@ import json
 @app.route('/')
 @app.route('/index')
 
-
-
 def index():
 #    return "I did not hit her, it's not true, it's bullshit, I did not... Oh, hi Mark!"
 
@@ -18,107 +16,11 @@ def index():
 
     f.close()
  
-
-    # articles = [
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #                             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             },
-    #             {
-    #                 'post': {'title': 'Test title'},
-    #                 'time': {'postedOn' : 'преди 3 дни'},
-    #                 'link': {'postURL': '_blank'}
-    #             }
-    #             ]
     return render_template('index.html', title='Home', user=user, articles=articles)
+
+
+@app.route('/post')
+
+def post():
+
+    return render_template('post.html', title='Home', user=user, articles=articles)
