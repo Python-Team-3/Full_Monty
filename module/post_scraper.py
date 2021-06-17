@@ -1,6 +1,7 @@
 import requests 
 from bs4 import BeautifulSoup
 from collections import Counter
+import re
 
 from module.post import Post
 
@@ -12,7 +13,7 @@ class PostScraper():
 # gets the posts from blog and append them to list
     def get_last_posts(self) -> list:
         posts = []
-
+        i = 0
         for url in self.post_urls:
             posts.append(self._read_post(url))
         
@@ -28,53 +29,21 @@ class PostScraper():
         title = post.find('h1', class_='entry-title').text
         date = post.find('span', class_='posted-on').time['title']
         body = post.find('div', class_='entry-content')
-        comments = post.find('div', class_='comment-content')
+      
+        commentsSection = soup.find(id = 'comments')
+        comments = self._get_comments(commentsSection)
 
         text = self._remove_linked_posts(body)
+        common = self._get_most_common_words(text.split())
 
-        return Post(title, date, text)
+        return Post(title, date, text, comments, common)
 
-# gets the most used 3 words
-    def _get_most_used_words(self,body) -> str:
-        wordlist = []
-        for each_text in body:
-            # use split() to break the sentence into
-            # words and convert them into lowercase
-            words = body.lower().split()
- 
-            for each_word in words:
-                wordlist.append(each_word)
-            clean_wordlist(wordlist)
- 
- # Function removes any unwanted symbols
-    def clean_wordlist(wordlist):
- 
-        clean_list = []
-        for word in wordlist:
-            symbols = "!@#$%^&*()_-+={[}]|\;:\"<>?/., "
-    
-            for i in range(len(symbols)):
-                word = word.replace(symbols[i], '')
-    
-            if len(word) > 3:
-                clean_list.append(word)
-        create_dictionary(clean_list)
+    def _get_most_common_words(self, word_list):
 
-# Creates a dictionary conatining each word's
-# count and top_3 ocuuring words
-    def create_dictionary(clean_list):
-        word_count = {}
-    
-        for word in clean_list:
-            if word in word_count:
-                word_count[word] += 1
-            else:
-                word_count[word] = 1
-        c = Counter(word_count)
- 
-        # returns the most occurring elements
-        top = c.most_common(3)
-        print(top)
+        words_to_count = (word for word in word_list if len(word)>3)
+        c = Counter(words_to_count)
+        return c.most_common(3)
+
 
 # remove linked posts
     def _remove_linked_posts(self, body) -> str:
@@ -88,3 +57,16 @@ class PostScraper():
             text += tag.text + '\n'
 
         return text
+
+    def _get_comments(self, body) -> str: 
+        selects = body.find_all("li", id = re.compile('^comment-'))
+
+        data = {}
+        data['comments'] = []
+        
+        for tag in selects:
+            data['comments'].append({
+            tag.find("footer", class_='comment-meta').text : tag.find("div", class_='comment-content').text
+            
+            })
+        return data
