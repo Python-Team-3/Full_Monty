@@ -9,7 +9,7 @@ class UrlScraper():
         pass
 
     def _get_post_urls(page_url) -> list:
-        r = requests.get(UrlScraper.BLOG_URL)
+        r = requests.get(page_url)
         soup = BeautifulSoup(r.text, features='html.parser')
         articles = soup.find_all("article")
         url_list = []

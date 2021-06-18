@@ -25,10 +25,45 @@ class PostScraper():
         title = post.find('h1', class_='entry-title').text
         date = post.find('span', class_='posted-on').time['title']
         body = post.find('div', class_='entry-content')
+        paragraphs = self._get_paragraphs(body)
+
+        comments_soup = soup.find('ol', class_='comment-list')
+        
+        comments = None if comments_soup is None else self._get_comments(comments_soup) 
 
         text = self._remove_linked_posts(body)
 
-        return Post(title, date, text)
+        return Post(title, date, text, comments=comments, first_paragraphs=paragraphs)
+
+    def _get_paragraphs(self, body):
+        paragraphs = []
+
+        for paragraph in body.find_all('p'):
+            self._remove_images(paragraph)
+            paragraph_text = paragraph.text
+            if len(paragraph_text) > 0:
+                paragraphs.append(paragraph_text)
+
+        return paragraphs
+
+    def _remove_images(self, paragraph):
+        for photo in paragraph.findChildren('img'):
+            photo.decompose()
+
+    def _get_comments(self, comments_soup):
+
+        comments_list = []
+        for li in comments_soup.find_all('li'):
+            comment_text = li.find('div', class_='comment-content').text
+            comment_author = self._remove_children(li.find('footer', class_='comment-meta'))
+            comments_list.append((comment_author, comment_text))
+
+        return comments_list
+
+    def _remove_children(self, comment_author) -> str:
+        for child in comment_author.findChildren():
+            child.decompose()
+        return comment_author.text.strip()
 
     def _remove_linked_posts(self, body) -> str:
 
