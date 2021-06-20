@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        <div id="content">
+            <main id="primary" class="site-main">
+                <article>
+                    <header class="entry-header">
+                        <h1 class="entry-title" style="margin: auto; width: 80%; padding: 10px;">За нас беше удоволстие да работим по тази задача</h1>
+                    </header>
+                </article>
+                <div id="comments" class="comments-area" style="margin: auto; width: 50%; padding: 10px;">
+                    <h2 class="comments-title" style="margin: auto; width: 50%; border: 2px dotted; green; padding: 10px;">Кои сме ние:</h2>
+                    <ul >
+                    	{% for user in us %}
+                        <li>{{ user }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </main>            
+        </div>
+{% endblock %}

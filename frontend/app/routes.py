@@ -1,26 +1,85 @@
 from app import app
 from flask import render_template
 import json
+from werkzeug.exceptions import abort
 
 @app.route('/')
 @app.route('/index')
 
 def index():
-#    return "I did not hit her, it's not true, it's bullshit, I did not... Oh, hi Mark!"
+    """
+    index [summary]
 
-    user = {'username': 'Pesho'}
+    function for generating the index page
 
-    f = open('app/data.json', 'r')
+    Returns:
+        [type]: [description]
+    """
 
-    articles = json.load(f)['articles']
+    user = {'username': 'Ангел'}
+
+    f = open('app/the_data.json', 'r')
+
+    articles = json.load(f)
+
+    data = open('app/img_url.json', 'r')
 
     f.close()
+
+    imgs = json.load(data)['articles']
+
+    data.close()
  
-    return render_template('index.html', title='Home', user=user, articles=articles)
+    return render_template('index.html', title='Home', user=user, articles=articles, imgs=imgs)
 
 
-@app.route('/post')
+def get_post(post_id):
 
-def post():
+    """
+     [summary]
 
-    return render_template('post.html', title='Home', user=user, articles=articles)
+    Returns:
+        [type]: [description]
+    """
+
+    f = open('app/the_data.json', 'r')
+
+    articles = json.load(f)
+
+    f.close()
+
+    post = articles[post_id]
+
+    if post_id > 19:
+        abort(404)
+
+    return post
+
+@app.route('/<int:post_id>')
+def post(post_id):
+
+    """
+     [summary]
+
+    Returns:
+        [type]: [description]
+    """
+
+    post = get_post(post_id)
+
+    return render_template('post.html', title='Recipe post', post=post)
+
+
+@app.route('/about')
+def about_us():
+
+    """
+     [summary]
+
+    Returns:
+        [type]: [description]
+    """
+
+    us = ['Сияна', 'Калина', 'Димитър', 'Венци']
+
+    return render_template('about-us.html', title='About', us=us)

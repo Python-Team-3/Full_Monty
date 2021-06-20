@@ -5,26 +5,26 @@
         <div id="content">       
             <main id="primary" class="site-main">
                 <header class="page-header">
-                    <h1 class="page-title">Hawdy, {{ user.username }}!</h1>
+                    <h1 class="page-title">Здравей, {{ user.username }}! &#128075;</h1>
                 </header>
-                <h2 class="page-header">Последни публикации:</h2>
+                <h2 class="page-header">Интересни публикации:</h2>
                 <div class="list">
-                    {% for article in articles %}
+                    {% for article in range(20) %}
                     <article class="list-article">
                         <header class="entry-header">
                             <h2>
-                                <a href="{{ article.link }}"> {{ article.title }}</a>
+                                <a href="/{{ article }}">{{ articles[article].title_1 }}</a>
                             </h2>
                             <div class="entry-meta alt-font list-footer">
                                 <span class="posted-on">
-                                    <time class="entry-date published">{{ article.time }}</time>
+                                    <time class="entry-date published">{{ articles[article].date_of_publishing }}</time>
                                 </span>                                
                             </div>
 
                         </header>
                         <div class="entry-content">
-                            <a href="_blank">
-                                <img src="_blank">
+                            <a href="/{{ article }}">
+                                <img src="{{ imgs[article].img_url }}">
                             </a>
                         </div>
                     </article>

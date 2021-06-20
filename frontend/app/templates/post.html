@@ -5,39 +5,36 @@
             <main id="primary" class="site-main">
                 <article>
                     <header class="entry-header">
-                        <h1 class="entry-title">                            
-                        </h1>
+                        <h1 class="entry-title" style="margin: auto; width: 60%; padding: 10px;">{{ post.title_1 }}</h1>
                         <div class="entry-meta alt-font">
                             <span class="posted-on">
-                                <time class="entry-date published"></time>
+                                <time class="entry-date published">{{ post.date_of_publishing }}</time>
                             </span>
-                            <span> common words</span>
+                            <span>Най-ползвани думи: {{ post['most_used_words'] }}</span>
                             <span class="comments-links">
-                                <a href="_self/#comments"></a>
+                                <a href="#comments">Коментари</a>
                             </span>
                         </div>
                     </header>
                     <div class="entry-content">
-                        <p></p>
-                        <p></p>
-                        <p></p>
+                        <p>{{ post.content[0] }}</p>
+                        <p>{{ post.content[1] }}</p>
+                        <p>{{ post.content[2] }}</p>
                     </div>
                 </article>
                 <div id="comments" class="comments-area">
-                    <h2 class="comments-title"> number of comments</h2>
-                    <ol class="comments-list">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ol>
+                    <h2 class="comments-title"><a id="comments">Коментари</a></h2>
+                    <ul class="comments-list">
+                        {% if post.comments %}
+                        {% for comment in post.comments %}
+                        <li>{{ comment[0] }}</li>
+                        <span>{{ comment[1] }}</span><br><br>
+                        {% endfor %}
+                        {% else %} 
+                        <li>Няма коментари</li>                     
+                        {% endif %}
+                    </ul>
                 </div>
             </main>            
         </div>
 {% endblock %}
-
-
-<!--                     {% for post in posts %}
-                    <div><p>{{ post.author.username }} says: <br /><br /><b>{{ post.body }}</b></p></div>
-                    {% endfor %}
- -->
