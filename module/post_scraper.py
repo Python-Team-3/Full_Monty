@@ -8,14 +8,18 @@ class PostScraper():
     def __init__(self, post_urls):
         self.post_urls = post_urls
 
+
+    # gets the posts from blog and append them to list
     def get_last_posts(self) -> list:
         posts = []
 
         for url in self.post_urls:
             posts.append(self._read_post(url))
-        
+
         return posts
-    
+
+
+    # read posts from blog
     def _read_post(self, url_post) -> Post:
         r = requests.get(url_post)
 
@@ -28,7 +32,7 @@ class PostScraper():
         paragraphs = self._get_paragraphs(body)
 
         comments_soup = soup.find('ol', class_='comment-list')
-        
+
         comments = None if comments_soup is None else self._get_comments(comments_soup) 
 
         text = self._remove_linked_posts(body)
@@ -65,6 +69,7 @@ class PostScraper():
             child.decompose()
         return comment_author.text.strip()
 
+    # remove linked posts
     def _remove_linked_posts(self, body) -> str:
 
         selects = body.find_all("ul", {"id": "klnArticleRelatedPosts"})
