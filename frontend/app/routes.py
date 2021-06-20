@@ -29,7 +29,7 @@ def index():
     imgs = json.load(data)['articles']
 
     data.close()
- 
+
     return render_template('index.html', title='Home', user=user, articles=articles, imgs=imgs)
 
 

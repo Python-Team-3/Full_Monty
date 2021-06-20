@@ -1,4 +1,4 @@
-import requests 
+import requests
 from bs4 import BeautifulSoup
 
 from module.post import Post
@@ -13,9 +13,9 @@ class PostScraper():
 
         for url in self.post_urls:
             posts.append(self._read_post(url))
-        
+
         return posts
-    
+
     def _read_post(self, url_post) -> Post:
         r = requests.get(url_post)
 
@@ -28,8 +28,8 @@ class PostScraper():
         paragraphs = self._get_paragraphs(body)
 
         comments_soup = soup.find('ol', class_='comment-list')
-        
-        comments = None if comments_soup is None else self._get_comments(comments_soup) 
+
+        comments = None if comments_soup is None else self._get_comments(comments_soup)
 
         text = self._remove_linked_posts(body)
 
