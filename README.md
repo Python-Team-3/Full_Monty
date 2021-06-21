@@ -15,15 +15,13 @@ The scraping and managing the data should be created using TDD as approach.
 _updated: 21.06.2021_
 
 ## Project's directories structure:
+
 ```
 Full_Monty
 ├── frontend
 │   ├── app
 │   │   ├── img_url.json
 │   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── __init__.cpython-36.pyc
-│   │   │   └── routes.cpython-36.pyc
 │   │   ├── routes.py
 │   │   ├── static
 │   │   │   ├── css
@@ -41,16 +39,12 @@ Full_Monty
 │   │   │   └── post.html
 │   │   └── the_data.json
 │   └── microblog.py
+├── github-clones-shot.png
 ├── main.py
 ├── module
 │   ├── __init__.py
 │   ├── post.py
 │   ├── post_scraper.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-36.pyc
-│   │   ├── post.cpython-36.pyc
-│   │   ├── post_scraper.cpython-36.pyc
-│   │   └── url_scraper.cpython-36.pyc
 │   └── url_scraper.py
 ├── QUESTIONS.md
 ├── README.md
@@ -63,5 +57,5 @@ Full_Monty
         ├── test_post_scraper.py
         └── test_url_scraper.py
 
-12 directories, 33 files
+10 directories, 28 files
 ```
