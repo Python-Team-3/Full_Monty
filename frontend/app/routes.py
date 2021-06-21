@@ -63,11 +63,13 @@ def post(post_id):
 
     Returns:
         [type]: [description]
+
     """
 
+    title = 'Рецепта'
     post = get_post(post_id)
 
-    return render_template('post.html', title='Recipe post', post=post)
+    return render_template('post.html', title=title, post=post)
 
 
 @app.route('/about')
@@ -83,3 +85,80 @@ def about_us():
     us = ['Сияна', 'Калина', 'Димитър', 'Венци']
 
     return render_template('about-us.html', title='About', us=us)
+
+@app.route('/page-2')
+def page2():
+
+    """
+     [summary]
+
+    Returns:
+        [type]: [description]
+    """
+    user = {'username': 'Ангел'}
+
+    f = open('app/the_data.json', 'r')
+
+    articles = json.load(f)[5:10]
+
+    data = open('app/img_url.json', 'r')
+
+    f.close()
+
+    imgs = json.load(data)['articles'][5:10]
+
+    data.close()
+
+    return render_template('index.html', title='Страница 2', user=user, articles=articles, imgs=imgs)
+
+@app.route('/page-3')
+def page3():
+
+    """
+     [summary]
+
+    Returns:
+        [type]: [description]
+    """
+
+    user = {'username': 'Ангел'}
+
+    f = open('app/the_data.json', 'r')
+
+    articles = json.load(f)[10:15]
+
+    data = open('app/img_url.json', 'r')
+
+    f.close()
+
+    imgs = json.load(data)['articles'][10:15]
+
+    data.close()
+
+    return render_template('index.html', title='Страница 3', user=user, articles=articles, imgs=imgs)
+
+@app.route('/page-4')
+def page4():
+
+    """
+     [summary]
+
+    Returns:
+        [type]: [description]
+    """
+
+    user = {'username': 'Ангел'}
+
+    f = open('app/the_data.json', 'r')
+
+    articles = json.load(f)[15:20]
+
+    data = open('app/img_url.json', 'r')
+
+    f.close()
+
+    imgs = json.load(data)['articles'][15:20]
+
+    data.close()
+
+    return render_template('index.html', title='Страница 4', user=user, articles=articles, imgs=imgs)

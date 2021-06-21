@@ -1,4 +1,4 @@
-import requests 
+import requests
 from bs4 import BeautifulSoup
 
 class UrlScraper():
@@ -21,7 +21,7 @@ class UrlScraper():
     def get_twenty_posts() -> list:
         urls = []
         page_number = 1
-        while len(urls) < UrlScraper.POSTS_TO_SCRAPE: 
+        while len(urls) < UrlScraper.POSTS_TO_SCRAPE:
             page_url = UrlScraper.BLOG_URL + f"page/{page_number}/"
             urls.extend(UrlScraper._get_post_urls(page_url))
             page_number += 1

@@ -17,9 +17,11 @@
                         </div>
                     </header>
                     <div class="entry-content">
-                        <p>{{ post.content[0] }}</p>
-                        <p>{{ post.content[1] }}</p>
-                        <p>{{ post.content[2] }}</p>
+                        <a href="#content" style="text-decoration: none;">
+                            <p>{{ post.content[0] }}</p>
+                            <p>{{ post.content[1] }}</p>
+                            <p>{{ post.content[2] }}</p>
+                        </a>
                     </div>
                 </article>
                 <div id="comments" class="comments-area">
@@ -30,11 +32,11 @@
                         <li>{{ comment[0] }}</li>
                         <span>{{ comment[1] }}</span><br><br>
                         {% endfor %}
-                        {% else %} 
-                        <li>Няма коментари</li>                     
+                        {% else %}
+                        <li>Няма коментари</li>
                         {% endif %}
                     </ul>
                 </div>
-            </main>            
+            </main>
         </div>
 {% endblock %}
