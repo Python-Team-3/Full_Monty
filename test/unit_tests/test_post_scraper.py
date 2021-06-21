@@ -1,6 +1,8 @@
 from module.post_scraper import PostScraper
 
 def test_scraper():
+    """Scraping a post from a given url
+    """
     post_scraper = PostScraper(['https://www.kulinarno-joana.com/2021/06/salata-s-proshuto-mozarela-i-iagodi/'])
     posts = post_scraper.get_last_posts()
 

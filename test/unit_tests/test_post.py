@@ -2,10 +2,14 @@ from module.post import Post
 import os
 
 def test_create():
+    """Creating an instance of object Post
+    """
     p = Post("fake_post", "some date", "post_text", ["1", "2"], ["1", "2", "3"])
     assert isinstance(p, Post)
 
 def test_txt():
+    """Creating a .txt file with post data
+    """
     try:
         filename = "test_file_name.txt"
         p = Post("abcde", "1234", "qwert", ["1", "2"], ["1", "2", "3"])
@@ -20,6 +24,8 @@ def test_txt():
         os.remove(filename)
 
 def test_json():
+    """Creating a .json file with post data
+    """
     try:
         filename = "test_file_name.json"
         p = Post("abcde", "1234", "qwert", comments=None, first_paragraphs=["1", "2", "3"])
