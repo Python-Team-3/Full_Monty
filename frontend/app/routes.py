@@ -18,11 +18,11 @@ def index():
 
     user = {'username': 'Ангел'}
 
-    f = open('app/the_data.json', 'r')
+    f = open('app/data/the_data.json', 'r')
 
     articles = json.load(f)
 
-    data = open('app/img_url.json', 'r')
+    data = open('app/data/img_url.json', 'r')
 
     f.close()
 
@@ -42,7 +42,7 @@ def get_post(post_id):
         [type]: [description]
     """
 
-    f = open('app/the_data.json', 'r')
+    f = open('app/data/the_data.json', 'r')
 
     articles = json.load(f)
 
@@ -97,11 +97,11 @@ def page2():
     """
     user = {'username': 'Ангел'}
 
-    f = open('app/the_data.json', 'r')
+    f = open('app/data/the_data.json', 'r')
 
     articles = json.load(f)[5:10]
 
-    data = open('app/img_url.json', 'r')
+    data = open('app/data/img_url.json', 'r')
 
     f.close()
 
@@ -123,11 +123,11 @@ def page3():
 
     user = {'username': 'Ангел'}
 
-    f = open('app/the_data.json', 'r')
+    f = open('app/data/the_data.json', 'r')
 
     articles = json.load(f)[10:15]
 
-    data = open('app/img_url.json', 'r')
+    data = open('app/data/img_url.json', 'r')
 
     f.close()
 
@@ -149,11 +149,11 @@ def page4():
 
     user = {'username': 'Ангел'}
 
-    f = open('app/the_data.json', 'r')
+    f = open('app/data/the_data.json', 'r')
 
     articles = json.load(f)[15:20]
 
-    data = open('app/img_url.json', 'r')
+    data = open('app/data/img_url.json', 'r')
 
     f.close()
 
